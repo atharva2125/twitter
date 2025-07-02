@@ -9,6 +9,7 @@ import connectMongoDB from "./db/connectMongoDB.js";
 import userRoutes from "./routes/user.routes.js";
 import { v2 as cloudinary } from "cloudinary";
 import postRoutes from "./routes/post.routes.js";
+import notificationRoutes from "./routes/notification.routes.js";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -22,7 +23,7 @@ cloudinary.config({
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
-// app.use("/api/notifications", notificationRoutes);
+app.use("/api/notifications", notificationRoutes);
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
     connectMongoDB();
